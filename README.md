@@ -100,7 +100,7 @@ receipt-reimbursement/
 
 ## Estimated vs. Actual Development Time
 
-- **Estimated time**: [6 ro 8 hours]
+- **Estimated time**: [Fill in your estimate]
 - **Actual time**: [8 hours]
 
 ## Justification for Tech Stack Choice
@@ -115,4 +115,44 @@ receipt-reimbursement/
 
 5. **Tailwind CSS**: Enables rapid UI development with utility-first approach, ensuring consistent styling and responsive design.
 
-6. **React Hook Form**: Provides efficient form handling with minimal re-renders and built-in validation capabilities. 
+6. **React Hook Form**: Provides efficient form handling with minimal re-renders and built-in validation capabilities.
+
+## Comments
+
+### Assumptions Made During Implementation
+
+1. **User Authentication**: The current implementation focuses on the core functionality of submitting reimbursements. In a production environment, this would be integrated with the university's authentication system.
+
+2. **Receipt Storage**: Receipts are stored in the local filesystem for simplicity. In a production environment, these would likely be stored in a cloud storage service like AWS S3 or Azure Blob Storage.
+
+3. **Business Rules**: I assumed basic validation rules such as requiring a minimum description length and positive amounts. In a real-world scenario, these rules would be defined by the university's finance department.
+
+4. **Database Structure**: I assumed a simple database structure focusing on the core requirements. A production system might include additional fields like employee ID, department, approval status, etc.
+
+### Challenges Encountered and Solutions
+
+1. **File Upload Handling**: Implementing secure file upload was challenging. I solved this by:
+   - Generating unique filenames to prevent collisions
+   - Validating file types on both client and server sides
+   - Creating a dedicated uploads directory with proper permissions
+
+2. **Form Validation**: Balancing user experience with proper validation was tricky. I implemented:
+   - Immediate client-side feedback for user-friendly experience
+   - Thorough server-side validation for security
+   - Descriptive error messages for user guidance
+
+3. **Database Schema Design**: Designing a schema that's both simple for the MVP but extensible for future features required careful consideration. I used Prisma's schema capabilities to include proper indexing and constraints.
+
+### Code Highlights
+
+1. **Clean Component Architecture**: The form component is designed with proper separation of concerns, making it easy to maintain and extend.
+
+2. **Error Handling**: Comprehensive error handling throughout the application provides a robust user experience.
+
+3. **TypeScript Integration**: Strong typing across the application ensures type safety and reduces potential runtime errors.
+
+4. **Responsive Design**: The UI is fully responsive and works well on mobile devices as well as desktop.
+
+5. **Setup Script**: The included setup script simplifies the onboarding process for new developers or users setting up the application.
+
+6. **API Design**: The API endpoints follow RESTful principles and include proper error handling and status codes.
